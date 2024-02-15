@@ -5,9 +5,13 @@ import { ShoppingCart } from '../components/ShoppingCart'
 import { ProductGallery } from '../components/ProductGallery'
 import data from '../data.json'
 import { useState } from 'react'
+import { ProductModal } from '../components/ProductModal'
+import { IProducts } from '../types/Product'
 
 export function Home() {
   const [filterValue, setFilterValue] = useState<string>('')
+  const [modal, setModal] = useState<boolean>(false)
+  const [selectedProduct, setSelectedProduct] = useState<IProducts | null>(null)
 
   const filteredProducts = data.products.filter((product) =>
     product.title.toLocaleLowerCase().includes(filterValue.toLowerCase()),
@@ -33,7 +37,14 @@ export function Home() {
         <ProductGallery>
           {filteredProducts.map((product) => (
             <div key={product.id} className="rounded bg-gray-100">
-              <div className="cursor-pointer transition-all hover:scale-105">
+              <div
+                onClick={() => {
+                  setModal(true)
+                  setSelectedProduct(product)
+                  console.log(product)
+                }}
+                className="cursor-pointer transition-all hover:scale-105"
+              >
                 <img
                   className="max-w-80"
                   src={product.image}
@@ -43,6 +54,8 @@ export function Home() {
             </div>
           ))}
         </ProductGallery>
+
+        {selectedProduct && modal && <ProductModal product={selectedProduct} />}
       </div>
     </div>
   )
