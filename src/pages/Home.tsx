@@ -4,15 +4,25 @@ import { ProductFilter } from '../components/ProductFilter'
 import { ShoppingCart } from '../components/ShoppingCart'
 import { ProductGallery } from '../components/ProductGallery'
 import data from '../data.json'
+import { useState } from 'react'
 
 export function Home() {
+  const [filterValue, setFilterValue] = useState<string>('')
+
+  const filteredProducts = data.products.filter((product) =>
+    product.title.toLocaleLowerCase().includes(filterValue.toLowerCase()),
+  )
+
   return (
     <div className="h-screen w-screen">
       <div className="container mx-auto px-6">
         <Header>
           <div className="flex items-center gap-4">
             <h1 className="text-xl font-semibold">devstore</h1>
-            <ProductFilter />
+            <ProductFilter
+              value={filterValue}
+              onChange={(event) => setFilterValue(event.target.value)}
+            />
           </div>
           <div className="flex items-center gap-4">
             <ShoppingCart />
@@ -21,7 +31,7 @@ export function Home() {
         </Header>
 
         <ProductGallery>
-          {data.products.map((product) => (
+          {filteredProducts.map((product) => (
             <div key={product.id} className="rounded bg-gray-100">
               <div className="cursor-pointer transition-all hover:scale-105">
                 <img
