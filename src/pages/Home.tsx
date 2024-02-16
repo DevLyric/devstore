@@ -59,7 +59,7 @@ export function Home() {
           <ProductModal
             product={selectedProduct}
             handleCloseModal={() => setModal(false)}
-            onClick={() => {
+            handleAddProductToCart={() => {
               setProductsQuantity((prevQuantity) => prevQuantity + 1)
             }}
           />

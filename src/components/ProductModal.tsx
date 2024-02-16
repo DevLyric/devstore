@@ -2,12 +2,12 @@ import { IProducts } from '../types/Product'
 
 interface ProductModalProps {
   product: IProducts
-  onClick: () => void
+  handleAddProductToCart: () => void
   handleCloseModal: () => void
 }
 export function ProductModal({
   product,
-  onClick,
+  handleAddProductToCart,
   handleCloseModal,
 }: ProductModalProps) {
   return (
@@ -50,7 +50,7 @@ export function ProductModal({
           </div>
 
           <button
-            onClick={onClick}
+            onClick={handleAddProductToCart}
             className="rounded-full bg-emerald-500 p-3 font-medium text-white hover:bg-emerald-600"
           >
             Adicionar ao carrinho
