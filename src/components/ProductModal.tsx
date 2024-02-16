@@ -3,8 +3,13 @@ import { IProducts } from '../types/Product'
 interface ProductModalProps {
   product: IProducts
   onClick: () => void
+  handleCloseModal: () => void
 }
-export function ProductModal({ product, onClick }: ProductModalProps) {
+export function ProductModal({
+  product,
+  onClick,
+  handleCloseModal,
+}: ProductModalProps) {
   return (
     <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/50 px-6">
       <div className="flex h-max flex-col gap-8 rounded-md bg-white shadow lg:flex-row">
@@ -15,7 +20,9 @@ export function ProductModal({ product, onClick }: ProductModalProps) {
         />
 
         <div className="flex flex-col gap-8 p-6">
-          <button className="w-10 self-end">X</button>
+          <button onClick={handleCloseModal} className="w-10 self-end">
+            X
+          </button>
           <div className="flex flex-col gap-2">
             <p className="text-xl font-semibold">{product.title}</p>
             <p>{product.description}</p>

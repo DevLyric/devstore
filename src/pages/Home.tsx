@@ -58,6 +58,7 @@ export function Home() {
         {selectedProduct && modal && (
           <ProductModal
             product={selectedProduct}
+            handleCloseModal={() => setModal(false)}
             onClick={() => {
               setProductsQuantity((prevQuantity) => prevQuantity + 1)
             }}
