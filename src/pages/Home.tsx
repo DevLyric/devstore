@@ -37,7 +37,7 @@ export function Home() {
 
         <ProductGallery>
           {filteredProducts.map((product) => (
-            <div key={product.id} className="rounded bg-gray-100">
+            <div key={product.id} className="rounded bg-zinc-900">
               <div
                 onClick={() => {
                   setModal(true)
