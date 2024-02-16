@@ -41,7 +41,7 @@ export function ProductModal({
               {['P', 'M', 'G', 'GG'].map((size) => (
                 <button
                   key={size}
-                  className="w-14 rounded-full bg-gray-600 px-4 py-2 font-medium text-white hover:bg-gray-900"
+                  className="h-12 w-12 rounded-full bg-gray-600  font-medium text-white hover:bg-gray-700"
                 >
                   {size}
                 </button>
