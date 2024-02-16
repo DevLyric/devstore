@@ -12,7 +12,7 @@ export function ProductModal({
 }: ProductModalProps) {
   return (
     <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/50 px-6">
-      <div className="flex h-max flex-col gap-8 rounded-md bg-zinc-950 shadow lg:flex-row">
+      <div className="flex h-max flex-col gap-8 rounded-md bg-zinc-900 shadow lg:flex-row">
         <img
           className="w-full max-w-xl"
           src={product.image}
