@@ -12,6 +12,7 @@ export function Home() {
   const [filterValue, setFilterValue] = useState<string>('')
   const [modal, setModal] = useState<boolean>(false)
   const [selectedProduct, setSelectedProduct] = useState<IProducts | null>(null)
+  const [productsQuantity, setProductsQuantity] = useState<number>(0)
 
   const filteredProducts = data.products.filter((product) =>
     product.title.toLocaleLowerCase().includes(filterValue.toLowerCase()),
@@ -29,7 +30,7 @@ export function Home() {
             />
           </div>
           <div className="flex items-center gap-4">
-            <ShoppingCart />
+            <ShoppingCart numberOfProducts={productsQuantity} />
             <Profile />
           </div>
         </Header>
@@ -41,7 +42,6 @@ export function Home() {
                 onClick={() => {
                   setModal(true)
                   setSelectedProduct(product)
-                  console.log(product)
                 }}
                 className="cursor-pointer transition-all hover:scale-105"
               >
@@ -55,7 +55,14 @@ export function Home() {
           ))}
         </ProductGallery>
 
-        {selectedProduct && modal && <ProductModal product={selectedProduct} />}
+        {selectedProduct && modal && (
+          <ProductModal
+            product={selectedProduct}
+            onClick={() => {
+              setProductsQuantity((prevQuantity) => prevQuantity + 1)
+            }}
+          />
+        )}
       </div>
     </div>
   )

@@ -1,3 +1,11 @@
-export function ShoppingCart() {
-  return <div>Cart (3)</div>
+interface ShoppingCartProps {
+  numberOfProducts: number
+}
+
+export function ShoppingCart({ numberOfProducts = 0 }: ShoppingCartProps) {
+  return (
+    <div>
+      Cart <span>({numberOfProducts})</span>
+    </div>
+  )
 }

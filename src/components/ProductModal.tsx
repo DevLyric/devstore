@@ -2,8 +2,9 @@ import { IProducts } from '../types/Product'
 
 interface ProductModalProps {
   product: IProducts
+  onClick: () => void
 }
-export function ProductModal({ product }: ProductModalProps) {
+export function ProductModal({ product, onClick }: ProductModalProps) {
   return (
     <div className="fixed left-0 top-0 flex h-screen w-screen items-center justify-center bg-black/50 px-6">
       <div className="flex h-max flex-col gap-8 rounded-md bg-white shadow lg:flex-row">
@@ -41,7 +42,10 @@ export function ProductModal({ product }: ProductModalProps) {
             </div>
           </div>
 
-          <button className="rounded-full bg-emerald-500 p-3 font-medium text-white hover:bg-emerald-600">
+          <button
+            onClick={onClick}
+            className="rounded-full bg-emerald-500 p-3 font-medium text-white hover:bg-emerald-600"
+          >
             Adicionar ao carrinho
           </button>
         </div>
